@@ -1,0 +1,19 @@
+mat-card {
+  width: 35%;
+  margin: 20vh auto;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+mat-card-title {
+  display: flex;
+  justify-content: center;
+}
+
+.button {
+  display: flex;
+  justify-content: space-between;
+}

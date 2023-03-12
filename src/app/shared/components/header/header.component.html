@@ -1,0 +1,32 @@
+<nav *ngIf="user | async as user">
+  <div class="navigation-buttons">
+    <button
+      mat-raised-button
+      color="primary"
+      class="admin-panel-button"
+      *ngIf="user.role === 'Admin'"
+      routerLink="admin">
+      Admin Panel
+    </button>
+    <button
+      mat-raised-button
+      color="primary"
+      class="dashboard-button"
+      routerLink="dashboard">
+      Dashboard
+    </button>
+  </div>
+  <div class="user">
+    <h2>
+      {{ user.first_name }}
+      {{ user.last_name }}
+    </h2>
+    <button
+      mat-raised-button
+      color="warn"
+      class="logout"
+      (click)="onLogout()">
+      Logout
+    </button>
+  </div>
+</nav>
