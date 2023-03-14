@@ -6,7 +6,6 @@ import { Store } from '@ngrx/store';
 import { AppState } from '../../_core/state/state';
 import { loadUser } from '../../_core/state/user/user.actions';
 import { SharedModule } from '../../shared/shared.module';
-
 @Component({
   imports: [SharedModule],
   standalone: true,
