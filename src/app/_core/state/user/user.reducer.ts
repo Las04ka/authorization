@@ -1,7 +1,7 @@
 import { createReducer, createSelector, on } from '@ngrx/store';
 
 import { AppState } from '../state';
-import { LoggedUserI } from '../../models/user';
+import { LoggedUserI } from '../../../shared/models/user';
 import { loadUserFail, loadUserSuccess } from './user.actions';
 
 export interface UserState {

@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 
 import { userSelector } from '../state/user/user.reducer';
 import { AppState } from '../state/state';
-import { AutoUnsubscribe } from '../decorators/unsubscriber';
+import { AutoUnsubscribe } from '../../shared/decorators/unsubscriber';
 
 @Injectable({
   providedIn: 'root',

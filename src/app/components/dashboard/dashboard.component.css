@@ -11,3 +11,9 @@
 .mat-mdc-row:hover .mat-mdc-cell {
   border-color: currentColor;
 }
+
+.assessment-image {
+  width: 18vw;
+  height: 20vh;
+  object-fit: cover;
+}

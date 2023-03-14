@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 
 import { AutoUnsubscribe } from '../../shared/decorators/unsubscriber';
 import { UserI } from '../../shared/models/user';
-import { Observable } from 'rxjs';
+import { SharedModule } from '../../shared/shared.module';
+import { AdminService } from '../../_core/services/admin.service';
 
 @Component({
+  standalone: true,
+  imports: [SharedModule],
   selector: 'app-admin-panel',
   templateUrl: './admin-panel.component.html',
   styleUrls: ['./admin-panel.component.css'],
@@ -15,10 +17,8 @@ export class AdminPanelComponent implements OnInit {
   columnsToDisplay: string[] = ['name', 'birthday', 'education', 'position'];
   usersData!: UserI[];
 
-  constructor(private _activatedRoute: ActivatedRoute) {}
+  constructor(private adminService: AdminService) {}
   ngOnInit() {
-    (this._activatedRoute.data as Observable<{ users: UserI[] }>).subscribe(
-      (el) => (this.usersData = el.users),
-    );
+    this.adminService.getUsers().subscribe((el) => (this.usersData = el));
   }
 }

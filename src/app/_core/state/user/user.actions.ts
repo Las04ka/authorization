@@ -1,14 +1,14 @@
 import { createAction, props } from '@ngrx/store';
 
-import { LoggedUserI } from '../../models/user';
+import { LoggedUserI } from '../../../shared/models/user';
 
 export const loadUser = createAction(
-  '[Cats] Load User',
+  '[User] Load User',
   props<{ email: string; password: string }>(),
 );
 
 export const loadUserSuccess = createAction(
-  '[Cats] Load User Success',
+  '[User] Load User Success',
   props<{ user: LoggedUserI }>(),
 );
 

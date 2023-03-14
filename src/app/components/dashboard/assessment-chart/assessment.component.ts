@@ -2,9 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, map } from 'rxjs';
 
-import { AssessmentService } from '../../../shared/services/assessment.service';
+import { AssessmentService } from '../../../_core/services/assessment.service';
 import { GraphPointI } from '../../../shared/models/assessment';
 import { AutoUnsubscribe } from '../../../shared/decorators/unsubscriber';
+import { intitialChart } from '../../../shared/constants';
+import { ChartI } from '../../../shared/models/chart';
 
 @Component({
   selector: 'app-assessment-chart',
@@ -14,22 +16,10 @@ import { AutoUnsubscribe } from '../../../shared/decorators/unsubscriber';
 @AutoUnsubscribe
 export class AssessmentComponent implements OnInit {
   assessmentId!: number;
-  chart: any;
+  chart!: ChartI;
   chartName$!: Observable<{ name: string; navigationId: number }>;
   dataPoints: GraphPointI[] = [];
-  chartOptions = {
-    animationEnabled: true,
-    theme: 'light2',
-    title: {
-      text: 'assessment-chart',
-    },
-    data: [
-      {
-        type: 'line',
-        dataPoints: this.dataPoints,
-      },
-    ],
-  };
+  chartOptions = intitialChart;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -53,11 +43,13 @@ export class AssessmentComponent implements OnInit {
         Object.entries(el.data).forEach(([key, value]) => {
           this.dataPoints.push({ label: key, y: value });
         });
+        (this.chartOptions.data[0].dataPoints as GraphPointI[]) =
+          this.dataPoints;
         this.chart.render();
       });
   }
 
   getChartInstance(chart: object) {
-    this.chart = chart;
+    this.chart = chart as ChartI;
   }
 }

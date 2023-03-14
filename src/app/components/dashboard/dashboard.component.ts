@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 
-import {
-  AssessmentI,
-  AssessmentResolverData,
-} from '../../shared/models/assessment';
+import { AssessmentI } from '../../shared/models/assessment';
 import { AutoUnsubscribe } from '../../shared/decorators/unsubscriber';
+import { AppState } from '../../_core/state/state';
+import { loadAssessments } from '../../_core/state/assessments/assessments.actions';
+import { assessmentsSelector } from '../../_core/state/assessments/assessments.reducer';
 
 @Component({
   selector: 'app-dashboard',
@@ -17,15 +18,13 @@ export class DashboardComponent implements OnInit {
   assessmentsData!: AssessmentI[];
   columnsToDisplay: string[] = ['index', 'name', 'users', 'image'];
 
-  constructor(
-    private router: Router,
-    private _activatedRoute: ActivatedRoute,
-  ) {}
+  constructor(private router: Router, private store: Store<AppState>) {}
 
   ngOnInit(): void {
-    (this._activatedRoute.data as AssessmentResolverData).subscribe(
-      (el) => (this.assessmentsData = el.assessments),
-    );
+    this.store.dispatch(loadAssessments());
+    this.store
+      .select(assessmentsSelector)
+      .subscribe((el) => (this.assessmentsData = el));
   }
 
   openAssessment(rowData: AssessmentI): void {

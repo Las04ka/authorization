@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, catchError, throwError } from 'rxjs';
 
-import { LoggedUserI } from '../models/user';
+import { LoggedUserI } from '../../shared/models/user';
 import { apiUrl } from '../../../environment/environment';
 import { MatSnackBar } from '@angular/material/snack-bar';
 

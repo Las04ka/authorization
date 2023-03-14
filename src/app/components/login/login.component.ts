@@ -3,10 +3,13 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 
-import { AppState } from '../../shared/state/state';
-import { loadUser } from '../../shared/state/user/user.actions';
+import { AppState } from '../../_core/state/state';
+import { loadUser } from '../../_core/state/user/user.actions';
+import { SharedModule } from '../../shared/shared.module';
 
 @Component({
+  imports: [SharedModule],
+  standalone: true,
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],

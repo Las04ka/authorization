@@ -3,7 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { apiUrl } from '../../../environment/environment';
-import { AssessmentGraphI, AssessmentI } from '../models/assessment';
+import { AssessmentGraphI, AssessmentI } from '../../shared/models/assessment';
 
 @Injectable({
   providedIn: 'root',

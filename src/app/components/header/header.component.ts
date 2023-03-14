@@ -3,9 +3,9 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import { AppState } from '../../state/state';
-import { userSelector } from '../../state/user/user.reducer';
-import { LoggedUserI } from '../../models/user';
+import { AppState } from '../../_core/state/state';
+import { userSelector } from '../../_core/state/user/user.reducer';
+import { LoggedUserI } from '../../shared/models/user';
 
 @Component({
   selector: 'app-header',
@@ -15,7 +15,8 @@ import { LoggedUserI } from '../../models/user';
 export class HeaderComponent {
   user: Observable<LoggedUserI> = this.store.select(userSelector);
 
-  constructor(private router: Router, private store: Store<AppState>) {}
+  constructor(public router: Router, private store: Store<AppState>) {}
+
   onLogout() {
     localStorage.removeItem('X-Token');
     this.router.navigateByUrl('');

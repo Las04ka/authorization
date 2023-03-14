@@ -13,7 +13,7 @@ import {
 
 import { loadUser, loadUserFail, loadUserSuccess } from './user.actions';
 import { AuthService } from '../../services/auth.service';
-import { LoggedUserI } from '../../models/user';
+import { LoggedUserI } from '../../../shared/models/user';
 import { Router } from '@angular/router';
 @Injectable()
 export class UserEffects {

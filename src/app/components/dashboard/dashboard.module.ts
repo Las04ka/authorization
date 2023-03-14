@@ -1,21 +1,13 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { MatButtonModule } from '@angular/material/button';
-import { MatTableModule } from '@angular/material/table';
-import { RouterLink } from '@angular/router';
 
 import { DashboardComponent } from './dashboard.component';
-import { AssessmentModule } from './assessment-chart/assessment.module';
+import { AssessmentComponent } from './assessment-chart/assessment.component';
+import { SharedModule } from '../../shared/shared.module';
+import { CanvasJSChart } from '../../../assets/canvasjs.angular.component';
 
 @NgModule({
-  declarations: [DashboardComponent],
-  imports: [
-    CommonModule,
-    MatButtonModule,
-    MatTableModule,
-    RouterLink,
-    AssessmentModule,
-  ],
+  declarations: [DashboardComponent, AssessmentComponent, CanvasJSChart],
+  imports: [SharedModule],
   exports: [DashboardComponent],
 })
 export class DashboardModule {}
