@@ -3,7 +3,10 @@ import { Component, OnInit } from '@angular/core';
 import { AutoUnsubscribe } from '../../shared/decorators/unsubscriber';
 import { UserI } from '../../shared/models/user';
 import { SharedModule } from '../../shared/shared.module';
-import { AdminService } from '../../_core/services/admin.service';
+import { Store } from '@ngrx/store';
+import { AppState } from '../../_core/state/state';
+import { usersSelector } from '../../_core/state/admin/admin.reducer';
+import { loadUsers } from '../../_core/state/admin/admin.actions';
 
 @Component({
   standalone: true,
@@ -17,8 +20,9 @@ export class AdminPanelComponent implements OnInit {
   columnsToDisplay: string[] = ['name', 'birthday', 'education', 'position'];
   usersData!: UserI[];
 
-  constructor(private adminService: AdminService) {}
+  constructor(private store: Store<AppState>) {}
   ngOnInit() {
-    this.adminService.getUsers().subscribe((el) => (this.usersData = el));
+    this.store.dispatch(loadUsers());
+    this.store.select(usersSelector).subscribe((el) => (this.usersData = el));
   }
 }

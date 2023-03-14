@@ -15,15 +15,21 @@ import { AssessmentService } from './services/assessment.service';
 import { AuthService } from './services/auth.service';
 import { AssessmentsReducer } from './state/assessments/assessments.reducer';
 import { AssessmentsEffects } from './state/assessments/assessments.effects';
+import { AdminEffects } from './state/admin/admin.effects';
+import { AdminReducer } from './state/admin/admin.reducer';
 
 @NgModule({
   declarations: [],
   imports: [
     StoreModule.forRoot(
-      { user: UserReducer, assessments: AssessmentsReducer },
+      {
+        user: UserReducer,
+        assessments: AssessmentsReducer,
+        admin: AdminReducer,
+      },
       { metaReducers },
     ),
-    EffectsModule.forRoot([UserEffects, AssessmentsEffects]),
+    EffectsModule.forRoot([UserEffects, AssessmentsEffects, AdminEffects]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
   ],
   providers: [
