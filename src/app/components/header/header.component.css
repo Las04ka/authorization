@@ -1,0 +1,36 @@
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3vh 20vw;
+  color: #ffffff;
+  background: rgb(252, 8, 234);
+  background: linear-gradient(
+    90deg,
+    rgba(252, 8, 234, 100%) 11%,
+    rgba(0, 212, 255, 100%) 96%
+  );
+  margin-bottom: 10px;
+}
+
+.navigation-buttons button {
+  width: 10vw;
+}
+
+.admin-panel-button {
+  margin-right: 2vw;
+}
+
+.mat-mdc-outlined-button {
+  color: #ffffff !important;
+}
+
+.user {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logout {
+  width: 100%;
+}
